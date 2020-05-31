@@ -10,7 +10,7 @@ function FrontPage(props) {
       <h1>Memory Game</h1>
     </div>
     <div className="leader-board">
-      <h1>Leader Board</h1>
+      {/* <h1>Leader Board</h1> */}
       <button onClick={() => {
         setCurrentPage(LeaderBoard)
       }}>Show Learder Board</button>
@@ -18,7 +18,7 @@ function FrontPage(props) {
     <div className="game-template">
       <div className="player-welcome">
         <p>
-          Welcome<br />
+          Welcome Player!!<br />
         Choose Your Level.
     </p>
       </div>
@@ -41,8 +41,8 @@ function FrontPage(props) {
       </div>
     </div>
     <footer>
-      All rights are reserved.
-  </footer>
+      <p>Ashish Kumar Saini © All Right Reserved 2030.</p>
+    </footer>
   </React.Fragment>
 }
 
