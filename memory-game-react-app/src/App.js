@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import FrontPage from "./Front-page";
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,7 @@ class App extends Component {
   }
 
   handelCurrentPage(nextPage, level) {
-    console.log(nextPage)
+
     this.setState(state => ({
       currentPage: nextPage,
       level: level

@@ -4,13 +4,12 @@ import GameLevels from "./Game";
 
 function FrontPage(props) {
   const setCurrentPage = props.onClick;
-  console.log(props)
-  return <React.Fragment>
+
+  return (<React.Fragment>
     <div className="heading">
       <h1>Memory Game</h1>
     </div>
     <div className="leader-board">
-      {/* <h1>Leader Board</h1> */}
       <button onClick={() => {
         setCurrentPage(LeaderBoard)
       }}>Show Learder Board</button>
@@ -43,7 +42,7 @@ function FrontPage(props) {
     <footer>
       <p>Ashish Kumar Saini © All Right Reserved 2030.</p>
     </footer>
-  </React.Fragment>
+  </React.Fragment>)
 }
 
 export default FrontPage;

@@ -1,17 +1,14 @@
 body {
   box-sizing: border-box;
+  background-color: #fefaec;
+  font-family: "Coda", cursive;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 100vh;
-  font-family: "Roboto", sans-serif;
-  background-color: #fefaec;
-  background-size: cover;
-  position: relative;
+  min-height: 100vh;
 }
 
 .heading {
@@ -20,15 +17,10 @@ body {
   font-family: "Chewy", cursive;
   font-size: 6em;
   color: #eb4559;
-
-  h1 {
-    margin-top: 20px;
-  }
 }
 
 .leader-board {
-  position: absolute;
-  top: 9em;
+  margin-top: 1.8em;
   button {
     font-size: 30px;
     padding: 10px 20px;
@@ -46,8 +38,7 @@ body {
 }
 
 .game-template {
-  position: absolute;
-  bottom: 12em;
+  top: 18em;
   border: 2px solid #d90591;
   background-color: #1f8ea3;
   width: 500px;
@@ -100,13 +91,15 @@ body {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
   background-color: #024249;
   width: 100%;
   text-align: center;
   font-size: 20px;
 
   p {
-    padding: 15px;
+    padding: 10px;
     color: #ffffff;
   }
 }
