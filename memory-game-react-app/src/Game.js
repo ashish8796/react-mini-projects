@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Icon from './components/Icon';
 
 const symbolEasy = ["fas fa-anchor", "fas fa-fish", "fas fa-feather", "fas fa-wrench", "fas fa-user-md", "fas fa-poo", "fas fa-anchor", "fas fa-fish", "fas fa-feather", "fas fa-wrench", "fas fa-user-md", "fas fa-poo"]
@@ -16,25 +16,26 @@ function suffleSymbols(arr) {
   return arr;
 }
 
+let matchedIcon = [];
+let iconArr = [];
+
 function GameLevels(props) {
   let currentSymbols = [];
   let currentLevel = "";
-  let matchedIcon = [];
-  let iconArr = [];
 
-  const [currentIcon, setCurrentIcon] = useState('');
+  // const [currentIcon, setCurrentIcon] = useState('');
 
-  const handleClickedIcon = (icon) => {
-    setCurrentIcon(icon);
-    iconArr.push(icon);
-    console.log(iconArr);
+  // const handleClickedIcon = (icon) => {
+  //   setCurrentIcon(icon);
+  //   iconArr.push(icon);
+  //   console.log(iconArr);
 
-    if (currentIcon === iconArr[0]) {
+  //   if (currentIcon === iconArr[0]) {
 
-      matchedIcon = [...matchedIcon, ...iconArr];
-      iconArr = [];
-    }
-  }
+  //     matchedIcon = [...matchedIcon, ...iconArr];
+  //     iconArr = [];
+  //   }
+  // }
 
   switch (props.level) {
     case "easy": {
@@ -53,8 +54,12 @@ function GameLevels(props) {
     };
       break;
   }
+  let currentShuffledArray;
+  // useEffect(() => {
+  // return currentShuffledArray;
+  // })
+  currentShuffledArray = suffleSymbols(currentSymbols);
 
-  const currentShuffledArray = useState(suffleSymbols(currentSymbols))[0];
   console.log(currentShuffledArray);
 
   return (
@@ -71,7 +76,7 @@ function GameLevels(props) {
 
         {
           currentShuffledArray && currentShuffledArray.map((symbol, index) => (
-            <Icon icon={symbol} key={symbol + index + 1} onMatchIcon={handleClickedIcon} />
+            <Icon icon={symbol} key={symbol + index + 1} />
           ))
         }
       </div >
