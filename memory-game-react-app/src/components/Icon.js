@@ -1,62 +1,13 @@
-import React, { useState } from 'react';
-
-
-let matchArr = [];
-let iconArr = [];
+import React from 'react';
 
 const Icon = (props) => {
-  const { icon } = props;
-  // const ClickedOnIcon = props.onMatchIcon;
-  // console.log(props)
-
-  const [showIcon, setShowIcon] = useState(false);
-  const [currentIcon, setCurrentIcon] = useState("");
-  const [previousIcon, setPreviousIcon] = useState("");
-
-
-  const handleClickOnIcon = () => {
-    setShowIcon(!showIcon);
-  }
-
-  const matchIcon = (icon) => {
-    console.log("icon: " + icon)
-    iconArr.push(icon);
-    setCurrentIcon(icon);
-    console.log("currenIcon: " + currentIcon);
-    if (iconArr.length == 2) {
-      setPreviousIcon(iconArr[0]);
-      console.log("previousIcon: " + previousIcon);
-      console.log("currentIcon: " + currentIcon, "previousIcon: " + previousIcon)
-      if (currentIcon === previousIcon) {
-        matchArr = matchArr.concat(iconArr);
-        // console.log(matchArr)
-      }
-      iconArr = [];
-    }
-    console.log(iconArr);
-    console.log("mathArr:" + matchArr)
-  }
-
-  const manageHideClass = (icon) => {
-    // console.log(icon)
-    if (showIcon) {
-      // console.log("manageHideClass is working.");
-      console.log("currentIcon: " + currentIcon, "previousIcon: " + previousIcon)
-      if (matchArr.indexOf(icon) + 1) {
-        return false;
-      }
-      return false;
-    }
-    return true;
-  }
+  const { icon, matchIcon, id, active, animation } = props;
 
   return (
-    <div className={`icon ${manageHideClass(icon) && "hide"}`} onClick={() => {
-      handleClickOnIcon();
-      // ClickedOnIcoSn(icon);
-      matchIcon(icon);
+    <div className={`icon ${!active && "hide"} ${animation && ("animate__animated animate__shakeX")}`} onClick={() => {
+      matchIcon(icon, id);
     }}>
-      <i className={`${icon} ${manageHideClass(icon) && "hide-icon"}`}></i>
+      <i className={`${icon} ${!active && "hide-icon"}`} ></i>
     </div>
   )
 }

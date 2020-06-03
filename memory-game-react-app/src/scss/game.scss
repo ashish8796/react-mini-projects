@@ -81,3 +81,7 @@ span {
 .hide-icon {
   visibility: hidden;
 }
+
+.animate__animated.animate__shakeX {
+  animation-duration: 500ms;
+}

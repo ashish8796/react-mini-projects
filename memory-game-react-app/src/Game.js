@@ -16,26 +16,35 @@ function suffleSymbols(arr) {
   return arr;
 }
 
-let matchedIcon = [];
-let iconArr = [];
-
 function GameLevels(props) {
   let currentSymbols = [];
   let currentLevel = "";
+  const [suffledArray, setSuffledArray] = useState([]);
+  const [matchedArr, setMatchedArr] = useState([]);
+  const [iconArr, setIconArr] = useState([]);
+  const [animate, setAnimate] = useState(false);
 
-  // const [currentIcon, setCurrentIcon] = useState('');
+  const handleClickedIcon = (icon, id) => {
+    if (iconArr.findIndex(i => i.id === id) === -1) {
+      setIconArr([...iconArr, {
+        iconName: icon,
+        id
+      }])
+    }
+  }
 
-  // const handleClickedIcon = (icon) => {
-  //   setCurrentIcon(icon);
-  //   iconArr.push(icon);
-  //   console.log(iconArr);
-
-  //   if (currentIcon === iconArr[0]) {
-
-  //     matchedIcon = [...matchedIcon, ...iconArr];
-  //     iconArr = [];
-  //   }
-  // }
+  useEffect(() => {
+    if (iconArr.length === 2) {
+      setAnimate(true);
+      if (iconArr[0].iconName === iconArr[1].iconName) {
+        setMatchedArr([...matchedArr, ...iconArr]);
+      }
+      setTimeout(() => {
+        setIconArr([]);
+      }, 800);
+    }
+    console.log(iconArr);
+  }, [iconArr])
 
   switch (props.level) {
     case "easy": {
@@ -54,13 +63,17 @@ function GameLevels(props) {
     };
       break;
   }
-  let currentShuffledArray;
-  // useEffect(() => {
-  // return currentShuffledArray;
-  // })
-  currentShuffledArray = suffleSymbols(currentSymbols);
 
-  console.log(currentShuffledArray);
+  let currentShuffledArray;
+  useEffect(() => {
+    currentShuffledArray = suffleSymbols(currentSymbols);
+    setSuffledArray(currentShuffledArray);
+    // console.log(currentShuffledArray);
+  }, [])
+
+  // We shuffled our array [DONE]
+  // PAir of icons is matched the push into array 
+  // console.log({ matchedArr })
 
   return (
     <>
@@ -75,9 +88,19 @@ function GameLevels(props) {
       <div className={`game-platform ${currentLevel}`} >
 
         {
-          currentShuffledArray && currentShuffledArray.map((symbol, index) => (
-            <Icon icon={symbol} key={symbol + index + 1} />
-          ))
+          suffledArray && suffledArray.map((symbol, index) => {
+            const id = symbol + index + 1;
+            return (
+              <Icon
+                icon={symbol}
+                key={symbol + index + 1}
+                matchIcon={handleClickedIcon}
+                id={id}
+                active={(iconArr.findIndex(i => i.id === id) !== -1) || (matchedArr.findIndex(i => i.id === id) !== -1)}
+                animation={animate}
+              />
+            )
+          })
         }
       </div >
     </>
