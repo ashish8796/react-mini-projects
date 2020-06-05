@@ -27,14 +27,37 @@
 }
 
 .table {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
   text-align: center;
   width: 500px;
   margin: 5px 0 10px 0;
   border-bottom: 2px solid gray;
   border-top: 2px solid gray;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.player {
+  margin: 5px 0;
+  font-size: 18px;
+  border-bottom: 1.5px solid #3490de;
+  border-top: 1.5px solid #3490de;
+  color: #044456;
+
+  div {
+    margin: 5px 0;
+  }
+}
+
+.player:last-child {
+  margin-bottom: 20px;
+}
+
+.player:first-child {
+  margin-top: 20px;
 }
 
 .head {

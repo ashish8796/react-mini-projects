@@ -1,4 +1,5 @@
 .game-platform {
+  margin-top: 2em;
   width: 700px;
   padding: 30px;
   display: grid;
@@ -57,7 +58,7 @@
 }
 
 .game-controls {
-  margin: 3em 0 1em 0;
+  margin-top: 3em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -84,4 +85,113 @@ span {
 
 .animate__animated.animate__shakeX {
   animation-duration: 700ms;
+}
+
+.animate__animated.animate__zoomIn {
+  animation-duration: 0.7s;
+}
+
+.game-finished {
+  display: flex;
+  position: absolute;
+  background-color: #00000066;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-completed {
+  border: 2px solid #5beddc;
+  width: 400px;
+  height: 200px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #06f6fe87;
+
+  h1 {
+    font-size: 23px;
+    margin: 10px;
+    color: #ffffff;
+    line-height: 30px;
+  }
+
+  em {
+    color: #ffd40b;
+  }
+}
+
+.save-progres {
+  height: 40%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  button {
+    border-radius: 6px;
+    height: 40px;
+    margin: 1em 2em;
+    font-size: 20px;
+    outline: none;
+    background-color: #8aff03;
+    border: none;
+    box-shadow: 11px 11px 6px #2a493c;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      background-color: #68be05;
+      box-shadow: 6px 6px 3px 0px #2a493c;
+      transition: box-shadow 0.5s;
+      cursor: pointer;
+    }
+  }
+
+  button:nth-child(2) {
+    width: 75px;
+    background-color: #ff5733;
+    &:hover {
+      background-color: #d1482b;
+    }
+  }
+}
+
+.enter-name {
+  text-align: left;
+  h1 {
+    text-align: center;
+    color: #0b4d4f;
+  }
+
+  input {
+    margin-left: 20px;
+    width: 200px;
+    outline: none;
+    // outline-color: coral;
+    font-size: 20px;
+    padding: 5px 10px;
+    background: none;
+    border: none;
+  }
+
+  button {
+    border-radius: 6px;
+    height: 40px;
+    margin-left: 10px;
+    font-size: 20px;
+    outline: none;
+    background-color: #8aff03;
+    border: none;
+    box-shadow: 11px 11px 6px #2a493c;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      background-color: #68be05;
+      box-shadow: 6px 6px 3px 0px #2a493c;
+      transition: box-shadow 0.5s;
+      cursor: pointer;
+    }
+  }
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Icon from './components/Icon';
+import FrontPage from './Front-page';
+import LeaderBoard from "./Learder-board";
 
 const symbolEasy = ["fas fa-anchor", "fas fa-fish", "fas fa-feather", "fas fa-wrench", "fas fa-user-md", "fas fa-poo", "fas fa-anchor", "fas fa-fish", "fas fa-feather", "fas fa-wrench", "fas fa-user-md", "fas fa-poo"]
 
@@ -19,6 +21,8 @@ function suffleSymbols(arr) {
 let interval;
 
 function GameLevels(props) {
+  const { onClick, level } = props;
+
   let currentSymbols = [];
   let currentLevel = "";
   let firstTimeClick = useRef(false);
@@ -28,6 +32,9 @@ function GameLevels(props) {
   const [iconArr, setIconArr] = useState([]);
   const [moves, setMoves] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [gameCompleted, setGameCompleted] = useState(false);
+  const [saveProgress, setSaveProgress] = useState(true);
+  const [khiladi, setPlayerName] = useState("");
 
   const handleClickedIcon = (icon, id) => {
 
@@ -55,6 +62,9 @@ function GameLevels(props) {
       currentLevel = "hard";
     };
       break;
+    default: {
+      currentSymbols = [];
+    }
   }
 
   useEffect(() => {
@@ -79,6 +89,7 @@ function GameLevels(props) {
 
     if (matchedArr.length === currentSymbols.length) {
       clearInterval(interval);
+      setGameCompleted(true);
     }
   }, [iconArr])
 
@@ -87,8 +98,42 @@ function GameLevels(props) {
     setSuffledArray(currentShuffledArray);
   }, [])
 
+  const onChangeFormInput = (e) => {
+    const { value: playerName } = e.target;
+    setPlayerName(playerName);
+  }
+
   return (
     <>
+      {true && (
+        <div className="game-finished">
+          <div className="game-completed animate__animated animate__zoomInDown">
+            <h1><em>Congratulation!! </em> You Completed the game with {moves} moves in {seconds} seconds. </h1>
+            {saveProgress ?
+              (<div className="save-progres">
+                <button onClick={() => {
+                  setSaveProgress(false);
+                }} >Save Score</button>
+                <button onClick={() => {
+                  onClick(FrontPage);
+                }}>Exit</button>
+              </div>) :
+              (<div className="enter-name">
+                <h1>Enter Your Name</h1>
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  console.log(khiladi);
+                  onClick(LeaderBoard, level, khiladi, moves, seconds);
+                }}>
+                  <input type="text" onChange={onChangeFormInput} autoFocus={true} />
+                  <button type="submit">Save Score</button>
+                </form>
+              </div>)
+            }
+          </div>
+        </div>
+      )}
+
       <div className="game-controls">
         <div className="moves">
           <p>Moves: {moves}</p>

@@ -11,7 +11,7 @@ function FrontPage(props) {
     </div>
     <div className="leader-board">
       <button onClick={() => {
-        setCurrentPage(LeaderBoard)
+        setCurrentPage(LeaderBoard, "")
       }}>Show Learder Board</button>
     </div>
     <div className="game-template">

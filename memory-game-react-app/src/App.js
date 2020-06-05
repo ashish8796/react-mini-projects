@@ -8,22 +8,31 @@ class App extends Component {
     super(props);
     this.state = {
       currentPage: FrontPage,
-      level: ""
+      level: "",
+      playerName: "",
+      moves: 0,
+      seconds: 0
     };
     this.handelCurrentPage = this.handelCurrentPage.bind(this);
   }
 
-  handelCurrentPage(nextPage, level) {
+  handelCurrentPage(nextPage, level, playerName, moves, seconds) {
 
     this.setState(state => ({
       currentPage: nextPage,
-      level: level
+      level: level,
+      playerName: playerName,
+      moves: moves,
+      seconds: seconds
     }));
+
   }
 
+
   render() {
+    // console.log(this.state)
     return (
-      <this.state.currentPage onClick={this.handelCurrentPage} level={this.state.level} />
+      <this.state.currentPage onClick={this.handelCurrentPage} level={this.state.level} khiladi={this.state.playerName} moves={this.state.moves} seconds={this.state.seconds} />
     );
   }
 }
