@@ -11,7 +11,8 @@ class App extends Component {
       level: "",
       playerName: "",
       moves: 0,
-      seconds: 0
+      seconds: 0,
+      gamePlayed: false
     };
     this.handelCurrentPage = this.handelCurrentPage.bind(this);
   }
@@ -23,7 +24,8 @@ class App extends Component {
       level: level,
       playerName: playerName,
       moves: moves,
-      seconds: seconds
+      seconds: seconds,
+      gamePlayed: this.state.currentPage === FrontPage ? false : true
     }));
 
   }
@@ -32,7 +34,7 @@ class App extends Component {
   render() {
     // console.log(this.state)
     return (
-      <this.state.currentPage onClick={this.handelCurrentPage} level={this.state.level} khiladi={this.state.playerName} moves={this.state.moves} seconds={this.state.seconds} />
+      <this.state.currentPage onClick={this.handelCurrentPage} level={this.state.level} khiladi={this.state.playerName} moves={this.state.moves} seconds={this.state.seconds} gamePlayed={this.state.gamePlayed} />
     );
   }
 }

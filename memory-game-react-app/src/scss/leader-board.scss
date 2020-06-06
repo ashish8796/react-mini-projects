@@ -31,20 +31,22 @@
   width: 500px;
   margin: 5px 0 10px 0;
   border-bottom: 2px solid gray;
-  border-top: 2px solid gray;
 }
 
 .row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
+
+  &:nth-of-type(2) {
+    margin-top: 10px;
+    border-top: 2px solid gray;
+  }
 }
 
 .player {
-  margin: 5px 0;
   font-size: 18px;
   border-bottom: 1.5px solid #3490de;
-  border-top: 1.5px solid #3490de;
   color: #044456;
 
   div {
@@ -53,11 +55,7 @@
 }
 
 .player:last-child {
-  margin-bottom: 20px;
-}
-
-.player:first-child {
-  margin-top: 20px;
+  border-bottom: none;
 }
 
 .head {

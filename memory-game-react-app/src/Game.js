@@ -103,9 +103,13 @@ function GameLevels(props) {
     setPlayerName(playerName);
   }
 
+  // const generateGamePlatform = () => {
+
+  // }
+
   return (
     <>
-      {true && (
+      {gameCompleted && (
         <div className="game-finished">
           <div className="game-completed animate__animated animate__zoomInDown">
             <h1><em>Congratulation!! </em> You Completed the game with {moves} moves in {seconds} seconds. </h1>
@@ -122,7 +126,6 @@ function GameLevels(props) {
                 <h1>Enter Your Name</h1>
                 <form onSubmit={(e) => {
                   e.preventDefault();
-                  console.log(khiladi);
                   onClick(LeaderBoard, level, khiladi, moves, seconds);
                 }}>
                   <input type="text" onChange={onChangeFormInput} autoFocus={true} />
@@ -141,9 +144,13 @@ function GameLevels(props) {
         <div className="seconds">
           <p>Seconds: {seconds}</p>
         </div>
+        <div className="restart-game">
+          <p>Play Again: </p> <i className="fas fa-redo" onClick={() => {
+            onClick(FrontPage, "")
+          }}></i>
+        </div>
       </div>
       <div className={`game-platform ${currentLevel}`} >
-
         {
           suffledArray && suffledArray.map((symbol, index) => {
             const id = symbol + index + 1;
