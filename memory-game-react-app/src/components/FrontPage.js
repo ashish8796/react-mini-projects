@@ -1,9 +1,15 @@
 import React from "react";
-import LeaderBoard from "./Learder-board";
-import GameLevels from "./Game";
 
 function FrontPage(props) {
-  const setCurrentPage = props.onClick;
+  const { handlePageChange = () => { }, handleStateChange = () => { } } = props;
+
+  const onChange = (level = '') => {
+    handleStateChange({
+      level
+    }, () => {
+      handlePageChange('Game')
+    })
+  }
 
   return (<React.Fragment>
     <div className="heading">
@@ -11,7 +17,7 @@ function FrontPage(props) {
     </div>
     <div className="leader-board">
       <button onClick={() => {
-        setCurrentPage(LeaderBoard, "")
+        handlePageChange('LeaderBoard')
       }}>Show Learder Board</button>
     </div>
     <div className="game-template">
@@ -24,17 +30,17 @@ function FrontPage(props) {
       <div className="level">
         <div className="easy-level">
           <button onClick={() => {
-            setCurrentPage(GameLevels, "easy");
+            onChange('easy')
           }}>Easy</button>
         </div>
         <div className="medium-level">
           <button onClick={() => {
-            setCurrentPage(GameLevels, "medium");
+            onChange('medium')
           }}>Medium</button>
         </div>
         <div className="hard-level">
           <button onClick={() => {
-            setCurrentPage(GameLevels, "hard");
+            onChange('hard')
           }}>Hard</button>
         </div>
       </div>
