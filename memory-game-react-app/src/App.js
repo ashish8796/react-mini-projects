@@ -3,7 +3,8 @@ import './App.css';
 import FrontPage from "./components/FrontPage";
 import LearderBoardPage from './components/LearderBoard';
 import GameLevels from './components/Game';
-import emitter from './utils/events';
+import { checkKeyName, getLocalStorage, setLocalStorage } from './utils/localstorage';
+
 
 // levels
 // 1 - easy 
@@ -19,7 +20,7 @@ import emitter from './utils/events';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = checkKeyName("appState") ? getLocalStorage("appState") : {
       currentPage: 'FrontPage',
       level: "",
       playerName: "",
@@ -29,25 +30,24 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    emitter.on('player-added', (data) => {
-      console.log(data)
-    });
-  }
 
   handleStateChange = (state = {}, cb = () => { }) => {
-    console.log({ state })
     this.setState({
       ...state
-    }, cb)
-  }
+    }, () => {
+      cb();
+      setLocalStorage("appState", this.state);
+    });
+  };
 
   handlePageChange = (page, cb = () => { }) => {
-    console.log(cb)
     this.setState({
       currentPage: page
-    }, cb)
-  }
+    }, () => {
+      cb();
+      setLocalStorage("appState", this.state);
+    });
+  };
 
   render() {
     const { level, currentPage, playerName, moves, seconds, gamePlayed } = this.state;

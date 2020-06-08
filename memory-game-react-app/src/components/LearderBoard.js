@@ -2,17 +2,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable default-case */
 /* eslint-disable no-lone-blocks */
-import React, { useState, useRef, useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
+import { setLocalStorage, checkKeyName, getLocalStorage } from '../utils/localstorage';
 
 function LearderBoardPage(props) {
-  const [players, setPlayers] = useState([])
+  const [players, setPlayers] = useState(checkKeyName("players") ? getLocalStorage("players") : [])
+
+  console.log(players)
 
   let { handlePageChange = () => { }, handleStateChange = () => { }, khiladi, level, moves, seconds, gamePlayed } = props;
-  let easyPlayerArr = [];
-  let mediumPlayerArr = [];
-  let hardPlayerArr = [];
 
   useEffect(() => {
+    console.log(gamePlayed)
     if (gamePlayed) {
       const myPlayer = {
         khiladi,
@@ -22,8 +24,13 @@ function LearderBoardPage(props) {
       }
 
       setPlayers([...players, myPlayer])
+      handleStateChange({ gamePlayed: false })
     }
   }, [gamePlayed])
+
+  useEffect(() => {
+    setLocalStorage("players", players);
+  }, [players]);
 
   const sortArray = (arr) => {
     arr.sort((a, b) => {
@@ -34,24 +41,6 @@ function LearderBoardPage(props) {
     });
 
     return arr;
-  }
-
-  switch (level) {
-    case "easy": {
-      let arr = players.filter(player => player.level === 'easy');
-      easyPlayerArr = sortArray(arr).slice(0, 5)
-    };
-      break;
-    case "medium": {
-      let arr = players.filter(player => player.level === 'medium');
-      mediumPlayerArr = sortArray(arr).slice(0, 5)
-    };
-      break;
-    case "hard": {
-      let arr = players.filter(player => player.level === 'hard');
-      hardPlayerArr = sortArray(arr).slice(0, 5)
-    }
-      break;
   }
 
   const addPlayer = (arr) => {
@@ -81,7 +70,9 @@ function LearderBoardPage(props) {
             <div className="moves head">Moves</div>
             <div className="time head">Time</div>
           </div>
-          {addPlayer(easyPlayerArr)}
+          {
+            addPlayer(sortArray(players.filter(player => player.level === 'easy')).slice(0, 5))
+          }
         </div>
         <h2>5 High Score Medium level</h2>
         <div className="medium-score table " >
@@ -90,7 +81,9 @@ function LearderBoardPage(props) {
             <div className="moves head">Moves</div>
             <div className="time head">Time</div>
           </div>
-          {addPlayer(mediumPlayerArr)}
+          {
+            addPlayer(sortArray(players.filter(player => player.level === 'medium')).slice(0, 5))
+          }
         </div>
         <h2>5 High Score Hard level</h2>
         <div className="hard-score table">
@@ -99,7 +92,9 @@ function LearderBoardPage(props) {
             <div className="moves head">Moves</div>
             <div className="time head">Time</div>
           </div>
-          {addPlayer(hardPlayerArr)}
+          {
+            addPlayer(sortArray(players.filter(player => player.level === 'hard')).slice(0, 5))
+          }
         </div>
       </div>
     </div>
