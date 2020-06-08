@@ -99,7 +99,7 @@ function GameLevels(props) {
   return (
     <>
       {
-        true && (
+        gameCompleted && (
           <div className="game-finished">
             <div className="game-completed animate__animated animate__zoomInDown">
               <h1><em>Congratulation!! </em> You Completed the game with {moves} moves in {seconds} seconds. </h1>
