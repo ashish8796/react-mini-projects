@@ -1,0 +1,102 @@
+.container-home {
+  font-family: "Inter", sans-serif;
+  min-height: 98vh;
+  position: relative;
+  transition: 0.4s;
+  background: #ccc;
+}
+
+.search-profile {
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+
+  h1 {
+    font-size: 35px;
+    font-weight: 500;
+    margin: 1em 0;
+  }
+
+  input {
+    font-size: 35px;
+    text-align: center;
+    height: 60px;
+    outline: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    border-radius: 10px;
+  }
+}
+
+.fa-github {
+  font-size: 80px;
+}
+
+.set-theme {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+
+  width: 60px;
+  height: 25px;
+}
+
+.ckbox {
+  cursor: pointer;
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+.ckbox:checked + .slider {
+  background-color: rgb(26, 30, 34);
+}
+
+.ckbox:checked + .slider:before,
+.go-right {
+  transform: translateX(34px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.dark {
+  background-color: rgb(26, 30, 34);
+  color: #ffffff;
+  transition: 0.4s;
+}
