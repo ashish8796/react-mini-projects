@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import fetchData from "../utils/fetchData";
 import { githubUri } from "../utils/uri";
 import { ID } from "../utils/types";
+import UserInfo from "../components/UserInfo";
 
 function User(props) {
   const [userData, setUserData] = useState(null);
@@ -20,10 +21,14 @@ function User(props) {
     })()
   }, [])
 
-  console.log("called before fetching");
+  // console.log(userData)
+  // console.log("called before fetching");
 
   return (
     <div className="container-user">
+      {userData ? < UserInfo data={userData} /> : <div className="lds-ellipsis">
+        <div></div><div></div><div></div><div></div>
+      </div>}
 
       <div className="data-shown"></div>
       <div className="repo-details"></div>
