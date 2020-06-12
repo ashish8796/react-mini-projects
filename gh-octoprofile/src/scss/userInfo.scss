@@ -1,0 +1,71 @@
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.user-img {
+  margin-top: 30px;
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 10px solid blue;
+  }
+}
+
+.user-name {
+  font-size: 40px;
+  font-weight: 500;
+  h1 {
+    margin: 25px 0;
+  }
+
+  a {
+    font-size: 30px;
+    display: block;
+    text-decoration: none;
+    margin: 25px;
+    font-family: "Fira Mono", "Roboto Mono", monospace;
+  }
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+
+  div {
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  p {
+    margin-left: 15px;
+    font-size: 16px;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.8em;
+  font-size: 25px;
+
+  div {
+    width: 140px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 20px;
+    border-radius: 5px;
+    background-color: #242c30;
+  }
+
+  p:last-child {
+    font-size: 16px;
+  }
+}

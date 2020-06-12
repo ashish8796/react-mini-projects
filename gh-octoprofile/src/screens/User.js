@@ -3,6 +3,8 @@ import fetchData from "../utils/fetchData";
 import { githubUri } from "../utils/uri";
 import { ID } from "../utils/types";
 import UserInfo from "../components/UserInfo";
+import MakeRepoDetails from "../components/RepoDetails";
+
 
 function User(props) {
   const [userData, setUserData] = useState(null);
@@ -21,17 +23,21 @@ function User(props) {
     })()
   }, [])
 
-  // console.log(userData)
-  // console.log("called before fetching");
-
   return (
     <div className="container-user">
-      {userData ? < UserInfo data={userData} /> : <div className="lds-ellipsis">
-        <div></div><div></div><div></div><div></div>
-      </div>}
-
-      <div className="data-shown"></div>
-      <div className="repo-details"></div>
+      {
+        userData ? (
+          <>
+            < UserInfo data={userData} />
+            <div className="data-shown"></div>
+            <MakeRepoDetails data={userData} />
+          </>
+        ) : (
+            <div className="lds-ellipsis">
+              <div></div><div></div><div></div><div></div>
+            </div>
+          )
+      }
     </div>
   )
 }
