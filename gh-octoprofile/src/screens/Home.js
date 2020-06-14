@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { ID } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 
 
 function Home(props) {
@@ -17,7 +17,6 @@ function Home(props) {
     <div className={`container-home ${!lightMode && theme}`} style={{ color: lightMode ? "#204051" : "#ccc" }}>
       <div className="search-profile">
         <FontAwesomeIcon icon={faGithub} />
-        {/* <i className="fab fa-github" style={{ color: lightMode ? "#204051" : "#ccc" }}></i> */}
         <h1>Find Your GH OctoProfile</h1>
         <form onSubmit={(e) => {
           e.preventDefault();

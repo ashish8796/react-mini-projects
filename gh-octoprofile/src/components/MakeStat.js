@@ -1,12 +1,13 @@
 import React from "react";
 
 export function MakeStat(props) {
-  const { key, value } = props;
+  const { statName, value } = props;
+  // console.log(key, value)
 
   return (
-    <div className={key}>
+    <div className={statName}>
       <p>{value}</p>
-      <p>{key}</p>
+      <p>{statName}</p>
     </div>
   )
 }

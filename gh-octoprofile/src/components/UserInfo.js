@@ -44,9 +44,9 @@ function UserInfo(props) {
       </div>
       <div className="stat">
         <>
-          <MakeStat key="REPOSITORIES" value={repos} />
-          <MakeStat key="FOLLOWERS" value={followers} />
-          <MakeStat key="FOLLOWING" value={following} />
+          <MakeStat statName={"REPOSITORIES"} value={repos} />
+          <MakeStat statName={"FOLLOWERS"} value={followers} />
+          <MakeStat statName={"FOLLOWING"} value={following} />
         </>
       </div>
     </div>
