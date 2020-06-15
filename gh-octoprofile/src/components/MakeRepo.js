@@ -6,28 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export function MakeRepo(props) {
-  const { reposArr } = props;
-  let color = "";
+  const { reposArr, userStat } = props;
+  // console.log(userStat)
 
   const assignColor = (language) => {
 
-    switch (language) {
+    let index = userStat.findIndex(lang => lang.label === language);
 
-      case "HTML":
-        color = "#ff5733";
-        break;
-      case "JavaScript":
-        color = "yellow";
-        break;
-      case "CSS":
-        color = "#562349";
-        break;
-      case "":
-        color = "#00005c";
-        break;
-    }
+    if (index + 1) return userStat[index].color;
 
-    return color;
+    return userStat[1].color;
   }
 
   // const options = {

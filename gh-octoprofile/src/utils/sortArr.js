@@ -1,4 +1,12 @@
 export function sortArr(arr, key) {
 
-  return arr.sort((a, b) => b[key] - a[key]);
+
+  console.log(arr, key)
+  const sortKey = {
+    forks: "fork",
+    stars: "star",
+    size: "size"
+  }
+
+  return arr.sort((a, b) => b[sortKey[key]] - a[sortKey[key]]);
 } 

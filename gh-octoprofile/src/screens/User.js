@@ -8,7 +8,6 @@ import MakeRepoDetails from "../components/RepoDetails";
 
 function User(props) {
   const [userData, setUserData] = useState(null);
-  console.log("User working");
 
   useEffect(() => {
     (async () => {
