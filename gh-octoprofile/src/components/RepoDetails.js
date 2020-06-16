@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 // import fetchData from "../utils/fetchData";
 import { MakeRepo } from "./MakeRepo";
 import { sortArr } from "../utils/sortArr";
@@ -81,11 +81,13 @@ function MakeRepoDetails(props) {
     setSortRepoKey(e.target.value)
   }
   console.log(new Date);
+
   useEffect(() => {
     const sorted = sortArr(repos, sortRepoKey);
-    console.log(sorted);
-    setRepos(sorted);
+    console.log({ sorted });
+    setRepos([...sorted]);
   }, [sortRepoKey])
+
   console.log(new Date);
 
   return (
