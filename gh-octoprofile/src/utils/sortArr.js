@@ -1,7 +1,4 @@
 export function sortArr(arr, key) {
-
-
-  console.log(arr, key)
   const sortKey = {
     forks: "fork",
     stars: "star",

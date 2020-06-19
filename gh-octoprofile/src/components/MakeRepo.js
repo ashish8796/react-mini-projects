@@ -1,16 +1,29 @@
 /* eslint-disable default-case */
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useCallback } from "react";
 
 import { faFolder, faStar, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Flipper, Flipped } from "react-flip-toolkit"
 
 
 export function MakeRepo(props) {
   const { reposArr, userStat } = props;
-  const [arrLen, setArrLen] = useState(10);
-  const targetEelm = useRef(null);
+  const [arrLen, setArrLen] = useState(9);
+  const observer = useRef();
+  const lastRepo = useCallback((node) => {
 
-  // console.log(userStat)
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+
+        if (arrLen < reposArr.length) {
+          changeArrLen();
+        }
+      }
+    }, { threshold: 1.0 });
+    if (node) observer.current.observe(node);
+  })
 
   const assignColor = (language) => {
 
@@ -21,62 +34,67 @@ export function MakeRepo(props) {
     return userStat[1].color;
   }
 
-  const options = {
-    threshold: .8
-  }
-
-  let observer = new IntersectionObserver(changeArrLen, options);
-
-  useEffect(() => {
-    observer.observe(targetEelm.current)
-  })
-
-  function changeArrLen() {
-    setArrLen(arrLen + 10);
-  }
-
-  const repoJsxArr = reposArr.slice(0, arrLen).map((repo, index) => {
-    // let repoElem = document.createEelement("div");
-    // repoElem.classList.add("repo");
-    // repoElem.setAttribute("key", `${repo.id}`)
-
-    let repoElem = (
-      <div className="repo" key={repo.id} ref={(index === arrLen - 1) && targetEelm}>
+  const internalContent = (link, name, description, language, star, fork, size) => {
+    return (
+      <>
         <div className="repo-link">
           <FontAwesomeIcon icon={faFolder} />
-          <a href={`${repo.link}`}>{repo.name} </a>
-          <p className="description">{repo.description} </p>
+          <a href={`${link}`}>{name} </a>
+          <p className="description">{description} </p>
         </div>
         <div className="display-stat">
           <div className="language">
-            <span className="language-color" style={{ backgroundColor: assignColor(repo.language) }}></span>
-            <p>{repo.language}</p>
+            <span className="language-color" style={{ backgroundColor: assignColor(language) }}></span>
+            <p>{language}</p>
           </div>
           <div className="star">
             <FontAwesomeIcon icon={faStar} />
-            {repo.star}
-          </div>
+            {star}
+          </div>effect
           <div className="fork">
             <FontAwesomeIcon icon={faCodeBranch} />
-            {repo.fork}
+            {fork}
           </div>
           <div className="size">
-            {repo.size} KB
+            {size} KB
           </div>
         </div>
-      </div >
+      </>
     )
+  }
 
-    // if (index === arrLen - 1) {
-    //   observer.observe(targetEelm.current)
-    // }
+  function changeArrLen() {
+    setArrLen(arrLen + 9);
+  }
 
-    return repoElem;
+  let repoIdArr = [];
+  const repoJsxArr = reposArr.slice(0, arrLen).map((repo, index) => {
+    repoIdArr.push(repo.id)
+    if (arrLen === index + 1) {
+      return (
+
+        <Flipped flipId={repo.id} key={repo.id}>
+          <div className="repo" key={repo.id} ref={lastRepo}>
+            {internalContent(repo.link, repo.name, repo.description, repo.language, repo.star, repo.fork, repo.size)}
+          </div >
+        </Flipped>
+      )
+    }
+    return (
+      <Flipped flipId={repo.id} key={repo.id}>
+        <div className="repo" key={repo.id}>
+          {internalContent(repo.link, repo.name, repo.description, repo.language, repo.star, repo.fork, repo.size)}
+        </div >
+      </Flipped>
+
+    )
   })
 
   return (
-    <>
-      {repoJsxArr}
-    </>
+    <Flipper flipKey={repoIdArr.join("")} className="flipper">
+      <>
+        {repoJsxArr}
+      </>
+    </Flipper >
   )
 }

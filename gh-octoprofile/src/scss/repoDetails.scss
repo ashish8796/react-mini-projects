@@ -2,6 +2,7 @@
   width: fit-content;
   margin: 0 auto;
   padding-bottom: 20px;
+  background-color: rgb(246, 248, 250);
 }
 
 .sort-repo {
@@ -12,11 +13,14 @@
 
   p {
     margin-right: 20px;
+    color: gray;
   }
   em {
     font-size: 40px;
     margin-right: 10px;
+    padding-bottom: 10px;
     border-bottom: 2px dashed gray;
+    color: black;
   }
 
   select {
@@ -34,7 +38,7 @@
   }
 }
 
-.repos {
+.flipper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto);
