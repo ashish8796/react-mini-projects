@@ -1,16 +1,20 @@
 .container-home {
   font-family: "Inter", sans-serif;
-  min-height: 98vh;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  height: 100vh;
   transition: 0.4s;
   background: #ccc;
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
 }
 
 .search-profile {
   text-align: center;
-  position: absolute;
-  top: 20%;
-  left: 35%;
+  margin-top: -2em;
 
   h1 {
     font-size: 35px;
@@ -99,4 +103,12 @@
   background-color: rgb(26, 30, 34);
   color: #ffffff;
   transition: 0.4s;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  @import "../media-query/homeMobileMediaQuery.scss";
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  @import "../media-query/homeTabMediaQuery.scss";
 }

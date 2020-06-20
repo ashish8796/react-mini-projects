@@ -71,3 +71,7 @@
     font-size: 16px;
   }
 }
+
+@media only screen and (max-width: 420px) {
+  @import "../media-query/userInfoMobileMediaQuery.scss";
+}

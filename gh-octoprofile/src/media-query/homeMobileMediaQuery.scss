@@ -1,0 +1,32 @@
+.search-profile {
+  h1 {
+    font-size: 25px;
+    font-weight: 400;
+  }
+
+  input {
+    font-size: 20px;
+    height: 40px;
+    border-radius: 6px;
+  }
+}
+
+.switch {
+  width: 50px;
+  height: 20px;
+}
+
+.ckbox {
+  width: 13px;
+  height: 13px;
+}
+
+.slider::before {
+  height: 13px;
+  width: 13px;
+}
+
+.ckbox:checked + .slider:before,
+.go-right {
+  transform: translateX(29px);
+}

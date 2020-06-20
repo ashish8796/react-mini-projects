@@ -1,0 +1,23 @@
+.sort-repo {
+  font-size: 18px;
+  margin: 30px 10px;
+
+  p {
+    margin-right: 10px;
+  }
+  em {
+    font-size: 30px;
+    margin-right: 5px;
+  }
+}
+
+.flipper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.repo {
+  margin: 8px auto;
+  width: 300px;
+}

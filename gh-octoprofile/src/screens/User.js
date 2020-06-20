@@ -52,7 +52,7 @@ function User(props) {
   }, [])
 
   return (
-    <div className="container-user">
+    <div className="container-user" style={{ backgroundColor: loading ? "rgb(26, 30, 34)" : "rgb(246, 248, 250)" }}>
       {
         !loading ? (
           <>
