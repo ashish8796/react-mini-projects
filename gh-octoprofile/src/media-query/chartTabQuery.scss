@@ -14,38 +14,35 @@
 }
 
 .lang-chart {
-  // width: 100%;
   padding-right: 10px;
-  // max-width: 300px;
+  width: 300px;
 }
 
 .repo-chart {
-  // width: 100%;
   padding-right: 10px;
-  // max-width: 300px;
+  width: 300px;
 }
 
 .star-lang-chart {
-  // width: 100%;
   padding-right: 10px;
-  // max-width: 300px;
+  width: 300px;
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (max-width: 670px) {
   .data-shown {
     display: flex;
     flex-direction: column;
   }
 
   .lang-chart {
-    width: 100%;
+    width: 350px;
   }
 
   .repo-chart {
-    width: 100%;
+    width: 350px;
   }
 
   .star-lang-chart {
-    width: 100%;
+    width: 350px;
   }
 }

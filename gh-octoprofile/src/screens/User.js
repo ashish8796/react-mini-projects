@@ -24,7 +24,11 @@ function User(props) {
 
         const me = new GhPolyglot(query.get(ID));
 
-        me.getAllRepos((_, data) => {
+        me.getAllRepos((err, data) => {
+          if (err) {
+            console.log(err)
+            return
+          }
           let repoArr = data.map(repo => {
             return {
               name: repo.name,

@@ -1,4 +1,3 @@
-
 async function fetchData(link, cb = () => { }) {
   try {
     const response = await fetch(link);
@@ -6,7 +5,14 @@ async function fetchData(link, cb = () => { }) {
 
     return data;
   } catch (e) {
-    throw new Error(e);
+    // alert(e.name)
+
+    if (e) {
+      console.log(e.name);
+      //   alert(
+      //   "Slow or No Internet Connection"
+      // );
+    }
   }
 }
 

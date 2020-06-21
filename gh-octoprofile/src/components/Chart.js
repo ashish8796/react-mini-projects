@@ -10,6 +10,7 @@ export default function MakeChart({ stats, repos }) {
   const [showChart, setShowChart] = useState(true);
   const deviceWidth = window.innerWidth;
   console.log(window.innerWidth)
+
   // Create Lang Chart
   const initLangChart = () => {
     const ctx = document.getElementById("lang-pie-chart").getContext("2d");

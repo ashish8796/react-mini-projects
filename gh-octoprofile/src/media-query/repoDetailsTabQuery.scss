@@ -1,0 +1,14 @@
+.sort-repo {
+  em {
+    margin-left: 1em;
+  }
+}
+
+.flipper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.repo {
+  width: 300px;
+}

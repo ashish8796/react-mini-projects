@@ -43,7 +43,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto);
-  grid-gap: 30px;
+  grid-gap: 20px;
 }
 
 .repo {
@@ -118,6 +118,17 @@
   @import "../media-query/repoDetailsMobileQuery.scss";
 }
 
-@media only screen and (min-widht: 421px) and (max-width: 768px) {
+@media only screen and (min-width: 421px) and (max-width: 768px) {
   @import "../media-query/repoDetailsTabQuery.scss";
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .flipper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .repo {
+    max-width: 450px;
+    width: 100%;
+  }
 }
