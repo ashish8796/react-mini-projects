@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React, { Component } from 'react';
 import Home from "./screens/Home";
 import User from "./screens/User";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // themes 1- dark, 2- light
 
@@ -26,7 +27,9 @@ class App extends Component {
         <>
           <Switch>
             <Route path="/user" >
-              <User />
+              <ErrorBoundary>
+                <User />
+              </ErrorBoundary>
             </Route>
             <Route exact path="/" >
               <Home theme={this.state.theme} handleStateChange={this.handleStateChange} />

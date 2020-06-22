@@ -5,7 +5,7 @@ import { ID } from "../utils/types";
 import UserInfo from "../components/UserInfo";
 import MakeRepoDetails from "../components/RepoDetails";
 import MakeChart from "../components/Chart";
-
+import ErrorBoundary from "../components/ErrorBoundary";
 
 import GhPolyglot from "gh-polyglot";
 
@@ -18,9 +18,45 @@ function User(props) {
 
   useEffect(() => {
     (async () => {
+      // const query = new URLSearchParams(window.location.search);
+      // const userData = <ErrorBoundary>{await fetchData(`${githubUri}/${query.get(ID) || ''}`)
+      // }</ErrorBoundary >
+
+      // console.log(userData);
+
+      // const me = new GhPolyglot(query.get(ID));
+
+      // me.getAllRepos((err, data) => {
+      //   if (err) {
+      //     console.log(err)
+      //     return
+      //   }
+      //   let repoArr = data.map(repo => {
+      //     return {
+      //       name: repo.name,
+      //       fork: repo.forks_count,
+      //       star: repo.stargazers_count,
+      //       size: repo.size,
+      //       link: repo.html_url,
+      //       id: repo.id,
+      //       language: repo.language,
+      //       description: repo.description
+      //     }
+      //   })
+      //   setRepos(repoArr);
+
+      //   me.userStats((_, data) => {
+      //     setUserStats(data);
+      //     setUserData(userData);
+      //     setLoading(false)
+      //   });
+      // });
+
       try {
-        const query = new URLSearchParams(window.location.search)
-        const userData = await fetchData(`${githubUri}/${query.get(ID) || ''}`);
+        const query = new URLSearchParams(window.location.search);
+        const userData = await fetchData(`${githubUri}/${query.get(ID) || ''}`)
+
+        console.log(userData);
 
         const me = new GhPolyglot(query.get(ID));
 
