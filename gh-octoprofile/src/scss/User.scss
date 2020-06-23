@@ -5,6 +5,54 @@
   color: #ccc;
 }
 
+.no-user,
+.no-internet,
+.limit-exceed {
+  background-color: rgb(26, 30, 34);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .fa-github {
+    margin-top: -1em;
+  }
+
+  h1 {
+    margin: 1em 0;
+    font-size: 35px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+.limit-exceed {
+  a {
+    color: #00909e;
+  }
+}
+
+.requests {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-weight: 300;
+  color: #5d5b5b;
+  h1 {
+    font-size: 12px;
+    color: #5d5b5b;
+  }
+  p {
+    font-size: 18px;
+    color: #a3a1a1;
+  }
+}
+
 .lds-ellipsis {
   display: inline-block;
   position: absolute;

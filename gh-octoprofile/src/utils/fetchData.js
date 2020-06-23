@@ -1,31 +1,37 @@
 async function fetchData(link, cb = () => { }) {
+  try {
+    const response = await fetch(link);
+    const fetchRemaining = response.headers.get("X-Ratelimit-Remaining");
 
-  const response = await fetch(link);
-  console.log(response.status)
-  // if (response.status === 404) {
-  //   throw new Error("User Not found")
-  // };
-  const data = await response.json();
+    if (response.status === 404) {
+      return {
+        data: "user not found",
+        requests: Number(fetchRemaining) - 2
+      };
+    }
 
-  return data;
+    if (response.status === 403) {
+      return {
+        data: "Request Limit Exceeded",
+        requests: Number(fetchRemaining) - 2
+      }
+    }
 
-  // try {
-  //   const response = await fetch(link);
-  // if (response.status === 404) {
-  //   throw new Error("User Not found")
-  // }
-  //   const data = await response.json();
+    if (response.status === 200) {
+      const data = await response.json();
 
-  //   return data;
-  // } catch (e) {
+      return {
+        data,
+        requests: Number(fetchRemaining) - 2
+      };
+    }
 
-  //   if (e) {
-  //     console.log(e.name);
-  //     //   alert(
-  //     //   "Slow or No Internet Connection"
-  //     // );
-  //   }
-  // }
+  } catch (e) {
+
+    if (e) {
+      return e.name;
+    }
+  }
 }
 
 export default fetchData;

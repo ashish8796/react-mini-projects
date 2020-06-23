@@ -11,7 +11,8 @@ import { MakeStat } from "./MakeStat";
 library.add(fab, faBriefcase, faMapMarkerAlt, faCalendarAlt);
 
 function UserInfo(props) {
-  const { data } = props;
+  const { userData } = props;
+  const { data, requests } = userData
 
   const userImgSrc = data.avatar_url;
   const joinedDate = data.created_at.substring(0, data.created_at.indexOf("T"));
@@ -21,6 +22,10 @@ function UserInfo(props) {
 
   return (
     <div className="user-info">
+      <div className="requests">
+        <p>{requests} / 60</p>
+        <h1>REQUESTS LEFT</h1>
+      </div>
       <div className="user-img">
         <img src={userImgSrc} alt="" />
       </div>

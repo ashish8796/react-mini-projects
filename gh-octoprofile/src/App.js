@@ -27,9 +27,7 @@ class App extends Component {
         <>
           <Switch>
             <Route path="/user" >
-              <ErrorBoundary>
-                <User />
-              </ErrorBoundary>
+              <User />
             </Route>
             <Route exact path="/" >
               <Home theme={this.state.theme} handleStateChange={this.handleStateChange} />
