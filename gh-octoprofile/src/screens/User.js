@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import fetchData from "../utils/fetchData";
 import { githubUri } from "../utils/uri";
 import { ID } from "../utils/types";
@@ -10,7 +10,7 @@ import MakeChart from "../components/Chart";
 import GhPolyglot from "gh-polyglot";
 import MakeErrorJsx from "../components/ErrorJSX";
 
-function User(props) {
+const User = memo((props) => {
   const [loading, setLoading] = useState(true)
   const [userData, setUserData] = useState({ data: "" });
   const [repos, setRepos] = useState([]);
@@ -28,9 +28,9 @@ function User(props) {
       const me = new GhPolyglot(query.get(ID));
 
       me.getAllRepos((_, data) => {
-        let repoArr;
+        let repoArr = [];
         if (data) {
-          repoArr = data.map(repo => {
+          repoArr = Array.isArray(data) ? data.map(repo => {
             return {
               name: repo.name,
               fork: repo.forks_count,
@@ -41,7 +41,7 @@ function User(props) {
               language: repo.language,
               description: repo.description
             }
-          })
+          }) : []
         }
 
         me.userStats((_, data) => {
@@ -70,8 +70,6 @@ function User(props) {
     }
   }, [userData])
 
-
-
   return (
     <div className="container-user" style={{ backgroundColor: loading ? "rgb(26, 30, 34)" : "rgb(246, 248, 250)" }}>
       {
@@ -79,8 +77,12 @@ function User(props) {
           !error ? (
             <>
               < UserInfo userData={userData} />
-              < MakeChart stats={userStats} repos={repos} />
-              <MakeRepoDetails repos={repos} userStat={userStats} />
+              {repos.length > 0 && (
+                <>
+                  < MakeChart stats={userStats} repos={repos} />
+                  <MakeRepoDetails repos={repos} userStat={userStats} />
+                </>
+              )}
             </>
           ) : (
               <MakeErrorJsx errorType={error} requests={userData.requests} />
@@ -93,6 +95,6 @@ function User(props) {
       }
     </div >
   )
-}
+})
 
 export default User;
