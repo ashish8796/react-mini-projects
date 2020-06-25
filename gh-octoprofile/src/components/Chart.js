@@ -70,7 +70,7 @@ export default function MakeChart({ stats, repos }) {
   }, [])
 
   return (
-    <div>
+    <div className="wrapper">
       <div className="data-shown">
         <div className="chart">
           <header>Top Languages</header>

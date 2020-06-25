@@ -73,7 +73,7 @@ const User = memo((props) => {
   }, [userData])
 
   return (
-    <div className="container-user" style={{ backgroundColor: lightMode ? "#ccc" : "rgb(26, 30, 34)" }}>
+    <div className="container-user" >
       {
         !loading ? (
           !error ? (
@@ -90,8 +90,10 @@ const User = memo((props) => {
               <MakeErrorJsx errorType={error} requests={userData.requests} />
             )
         ) : (
-            <div className="lds-ellipsis">
-              <div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div>
+            <div className="wrapper" style={{ backgroundColor: lightMode ? "#ccc" : "rgb(26, 30, 34)" }}>
+              <div className="lds-ellipsis" >
+                <div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div>
+              </div>
             </div>
           )
       }
