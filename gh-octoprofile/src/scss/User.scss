@@ -1,3 +1,5 @@
+@import "./Theme.scss";
+
 .container-user {
   font-family: "Inter", sans-serif;
   background-color: rgb(246, 248, 250);
@@ -8,16 +10,17 @@
 .no-user,
 .no-internet,
 .limit-exceed {
-  background-color: rgb(26, 30, 34);
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: 0.4s;
 
   .fa-github {
     margin-top: -1em;
+    transition: 0.4s;
   }
 
   h1 {

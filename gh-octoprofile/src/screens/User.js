@@ -9,6 +9,7 @@ import MakeChart from "../components/Chart";
 
 import GhPolyglot from "gh-polyglot";
 import MakeErrorJsx from "../components/ErrorJSX";
+import myThemeContext from "../components/Context";
 
 const User = memo((props) => {
   const [loading, setLoading] = useState(true)
@@ -16,6 +17,7 @@ const User = memo((props) => {
   const [repos, setRepos] = useState([]);
   const [userStats, setUserStats] = useState(null);
   const [error, setError] = useState(null);
+  const lightMode = myThemeContext()[0];
 
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const User = memo((props) => {
   }, [userData])
 
   return (
-    <div className="container-user" style={{ backgroundColor: loading ? "rgb(26, 30, 34)" : "rgb(246, 248, 250)" }}>
+    <div className="container-user" style={{ backgroundColor: lightMode ? "#ccc" : "rgb(26, 30, 34)" }}>
       {
         !loading ? (
           !error ? (
@@ -89,7 +91,7 @@ const User = memo((props) => {
             )
         ) : (
             <div className="lds-ellipsis">
-              <div></div><div></div><div></div><div></div>
+              <div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div><div style={{ backgroundColor: lightMode ? "rgb(26, 30, 34)" : "#fff" }}></div>
             </div>
           )
       }
