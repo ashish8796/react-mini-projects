@@ -1,10 +1,9 @@
 import React from "react";
-import myThemeContext from "./Context";
+import myThemeContext from "./ThemeContext";
 
 
 export default function ThemeButton() {
   const [lightMode, setLightMode] = myThemeContext();
-
   return (
     <div className="set-theme">
       <div className="switch">

@@ -9,7 +9,7 @@ import MakeChart from "../components/Chart";
 
 import GhPolyglot from "gh-polyglot";
 import MakeErrorJsx from "../components/ErrorJSX";
-import myThemeContext from "../components/Context";
+import useTheme from "../components/ThemeContext";
 
 const User = memo((props) => {
   const [loading, setLoading] = useState(true)
@@ -17,7 +17,7 @@ const User = memo((props) => {
   const [repos, setRepos] = useState([]);
   const [userStats, setUserStats] = useState(null);
   const [error, setError] = useState(null);
-  const lightMode = myThemeContext()[0];
+  const [lightMode] = useTheme();
 
 
   useEffect(() => {

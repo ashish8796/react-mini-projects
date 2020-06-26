@@ -4,15 +4,13 @@ import { ID } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import ThemeButton from "../components/Theme";
-import myThemeContext from "../components/Context";
-
-
+import useTheme from "../components/ThemeContext";
 
 function Home(props) {
   let history = useHistory();
   const [userName, setUserName] = useState('');
 
-  const lightMode = myThemeContext()[0];
+  const [lightMode] = useTheme();
 
   return (
     <div className={`container-home ${!lightMode && "dark"}`} style={{ color: lightMode ? "#204051" : "#ccc" }}>
@@ -23,16 +21,20 @@ function Home(props) {
           e.preventDefault();
           history.push(`/user?${ID}=${userName}`);
         }}>
-          <input type="text" style={{
-            background: lightMode ? "#30333326" : "#1f2f35",
-            transition: ".4s",
-            color: lightMode ? "#075d77" : "#ffffff"
-          }} onChange={(e) => {
-            setUserName(e.target.value);
-          }} />
+          <input
+            type="text"
+            style={{
+              background: lightMode ? "#30333326" : "#1f2f35",
+              transition: ".4s",
+              color: lightMode ? "#075d77" : "#ffffff"
+            }}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
         </form>
       </div>
-      {ThemeButton()}
+      <ThemeButton />
     </div>
   )
 }

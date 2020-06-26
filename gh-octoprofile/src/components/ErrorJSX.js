@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import ThemeButton from "./Theme";
-import myThemeContext from "./Context";
+import myThemeContext from "./ThemeContext";
 
 
 

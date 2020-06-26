@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { JoinedDate } from "../utils/month";
 import { MakeStat } from "./MakeStat";
 import ThemeButton from "./Theme";
-import myThemeContext from "../components/Context";
+import myThemeContext from "./ThemeContext";
 
 library.add(fab, faBriefcase, faMapMarkerAlt, faCalendarAlt);
 
@@ -23,7 +23,7 @@ function UserInfo(props) {
 
   return (
     <>
-      {ThemeButton()}
+      <ThemeButton />
       <div className={`user-info ${lightMode && "changeTheme"}`} >
         <div className="requests">
           <p style={{ color: lightMode && "#454545" }}>{requests} / 60</p>

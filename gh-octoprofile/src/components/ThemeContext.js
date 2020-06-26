@@ -14,8 +14,8 @@ export const MyThemeProvider = ({ children }) => {
   )
 }
 
-const myThemeContext = () => useContext(Mytheme);
+const useTheme = () => useContext(Mytheme);
 
-export default myThemeContext;
+export default useTheme;
 
 
