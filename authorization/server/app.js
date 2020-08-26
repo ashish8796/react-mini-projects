@@ -10,6 +10,13 @@ const PORT = 5500;
 
 app.use(cors());
 app.use(bodyParser.json())
+// app.use(express.json())
+
+const user = [];
+
+app.get('/users', (req, res) => {
+  res.json(users);
+})
 
 app.post('/login', async (req, res) => {
   const { body } = req;
@@ -25,17 +32,19 @@ app.post('/login', async (req, res) => {
 
 })
 
-app.post("/sign-up", async (req, res) => {
+app.post("/sign", (req, res) => {
   const { body } = req;
-  try {
-    const dbResponse = await (await db).collection('users').insertOne(body);
-  }
-  catch (e) {
-    return e
-  }
-
   console.log(body)
-  res.end();
+
+  user.push(body)
+  // try {
+  //   const dbResponse = await (await db).collection('users').insertOne(body);
+  // }
+  // catch (e) {
+  //   return e
+  // }
+
+  res.status(201).send();
 })
 
 app.listen(PORT)
